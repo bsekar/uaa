@@ -1015,6 +1015,7 @@ public class ScimUserEndpointsTests {
         UserAccountStatus updatedStatus = endpoints.updateAccountStatus(userAccountStatus, createdUser.getId());
         ScimUser updatedUser = endpoints.getUser(createdUser.getId(), new MockHttpServletResponse());
         assertEquals(UaaDateUtils.getMinDate(), updatedUser.getPasswordLastModified().getTime());
+        assertEquals("INVALID", TimeZone.getDefault().getID());
     }
 
     @Test(expected = IllegalArgumentException.class)
